@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React from 'react';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+
+import Orb from './Orb';
+
+const useQuery = () => {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
+// only here for router purposes atm
+const OrbWrapper = () => {
+  let query = useQuery();
+
+  return (
+    <Orb colour={query.get('color')} percent={parseFloat(query.get('percent'))} size={parseInt(query.get('size'))} />
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <OrbWrapper />
+    </Router>
+  )
 }
 
 export default App;
