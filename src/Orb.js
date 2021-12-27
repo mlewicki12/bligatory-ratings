@@ -15,11 +15,16 @@ const Orb = ({ colour, percent, size }) => {
 
   if(isNaN(size) || percent < 0 || percent > 100) return null;
 
+  // check if hex and append a hash
+  const color = /^([0-9A-F]{3}){1,2}$/i.test(colour)
+    ? `#${colour}`
+    : colour;
+
   return (
     <>
     <svg style={{position: 'absolute', width: `${size}px`, height: `${size}px`, top: 0, left: 0}}>
       <style type="text/css">
-        .st0{`{fill:#FFFFFF;stroke:#000000;stroke-width:${Math.max(size / 100 - 1, 1.5)};stroke-linejoin:round;stroke-miterlimit:10;}`}
+        .st0{`{fill:#FFFFFF;stroke:#000000;stroke-width:${Math.max(size / 100, 1.5)};stroke-linejoin:round;stroke-miterlimit:10;}`}
       </style>
       <circle cx={size / 2} cy={size / 2} r={r + size / 20} />
       <image href='resources/bligatory-orb-base.png' width={size} height={size} />
@@ -31,7 +36,7 @@ const Orb = ({ colour, percent, size }) => {
           cx={size / 2}
           cy={size / 2}
           fill='transparent'
-          stroke={strokePct !== circ ? colour : ''}
+          stroke={strokePct !== circ ? color : ''}
           strokeWidth={size / 20}
           strokeDasharray={circ}
           strokeDashoffset={percent ? strokePct : 0}
