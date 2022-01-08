@@ -25,7 +25,7 @@ const OrbWrapper = () => {
   const sizes = query.get('size').split(',');
 
   return (
-    <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'space-between', alignItems: 'center'}}>
+    <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'space-between', alignItems: 'flex-end'}}>
       {percents.map((perc, index) => (
         <Orb
           colour={colors[index] ?? colors[0] ?? 'red'}
