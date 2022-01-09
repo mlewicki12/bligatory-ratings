@@ -24,12 +24,12 @@ const Orb = ({ colour, percent, size, label }) => {
     <div style={{display: 'flex', flexFlow: 'column nowrap', justifyContent: 'flex-end', alignItems: 'center'}}>
       <svg style={{position: 'relative', width: `${size}px`, height: `${size}px`}}>
         <style type="text/css">
-          .st0{`{fill:#FFFFFF;stroke:#000000;stroke-width:${Math.max(size / 100, 1.5)};stroke-linejoin:round;stroke-miterlimit:10;}`}
+          .st0{`{fill:${color};stroke:#000000;stroke-width:${Math.max(size / 100, 1.5)};stroke-linejoin:round;stroke-miterlimit:10;}`}
         </style>
         <circle cx={size / 2} cy={size / 2} r={r + size / 20} />
         <image href='resources/bligatory-orb-base.png' width={size} height={size} />
         <text textAnchor='middle' transform={`matrix(1 0 0 1 ${size / 2} ${size / 2 + size / 20})`} fontSize={size / 8.5} className='st0 svg-text'>{percent}%</text>
-        <image href='resources/bligatory-orb-tape.png' width={size} height={size} />
+        <image href='resources/bligatory-orb-tape.png' width={size} height={size} opacity={0.65} />
         <g transform={`rotate(-90 ${size / 2} ${size / 2})`}>
           <circle
             r={r}
@@ -45,7 +45,7 @@ const Orb = ({ colour, percent, size, label }) => {
           />
         </g>
       </svg>
-      <h1 style={{fontSize: '1.5rem', color: 'white'}}>{label}</h1>
+      <h1 style={{fontSize: '1.5rem', fontFamily: 'mlewicki-futura-bold', color: 'white'}}>{label}</h1>
     </div>
   );
 }
