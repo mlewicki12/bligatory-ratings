@@ -11,8 +11,8 @@ const useQuery = () => {
 }
 
 const labels = [
-  'Bligatory Score',
   'Community Score',
+  'BLIGATORY Score',
   'Team Score'
 ];
 
