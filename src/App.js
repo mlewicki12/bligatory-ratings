@@ -21,17 +21,18 @@ const OrbWrapper = () => {
   let query = useQuery();
 
   const percents = query.get('percent')?.split(',') ?? [];
-  const colors = query.get('color')?.split(',');
-  const sizes = query.get('size')?.split(',');
+  const colors = query.get('color')?.split(',') ?? [];
+  const sizes = query.get('size')?.split(',') ?? [];
+  const useLabels = query.get('labels');
 
   return (
-    <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+    <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: percents.length > 1 ? 'space-between' : 'flex-start', alignItems: 'flex-end'}}>
       {percents.map((perc, index) => (
         <Orb
           colour={colors[index] ?? colors[0] ?? 'red'}
           percent={perc}
           size={sizes[index] ?? sizes[0] ?? 200}
-          label={labels[index] ?? labels[0]}
+          label={useLabels && (labels[index] ?? labels[0])}
         />
       ))}
     </div>
